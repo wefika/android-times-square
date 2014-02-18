@@ -27,7 +27,8 @@ public class CalendarGridView extends ViewGroup {
   }
 
   @Override public void addView(View child, int index, ViewGroup.LayoutParams params) {
-    if (getChildCount() == 0) {
+      int cnt = getChildCount();
+    if (cnt == 1) {
       ((CalendarRowView) child).setIsHeaderRow(true);
     }
     super.addView(child, index, params);
@@ -35,7 +36,7 @@ public class CalendarGridView extends ViewGroup {
 
   @Override protected void dispatchDraw(Canvas canvas) {
     super.dispatchDraw(canvas);
-    final ViewGroup row = (ViewGroup) getChildAt(1);
+    final ViewGroup row = (ViewGroup) getChildAt(2);
     int top = row.getTop();
     int bottom = getBottom();
     // Left side border.

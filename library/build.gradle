@@ -20,4 +20,9 @@ android {
         instrumentTest.setRoot('tests')
         instrumentTest.java.srcDirs = ['tests']
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }

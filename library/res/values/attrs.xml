@@ -9,4 +9,9 @@
     <attr name="state_range_last" format="boolean" />
     <attr name="state_highlighted" format="boolean" />
   </declare-styleable>
+
+    <declare-styleable name="CalendarRowView_Layout">
+        <attr name="cols" format="integer" />
+    </declare-styleable>
+
 </resources>

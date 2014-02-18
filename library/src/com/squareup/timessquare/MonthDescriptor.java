@@ -3,7 +3,7 @@ package com.squareup.timessquare;
 
 import java.util.Date;
 
-class MonthDescriptor {
+public class MonthDescriptor {
   private final int month;
   private final int year;
   private final Date date;

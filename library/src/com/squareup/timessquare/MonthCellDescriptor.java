@@ -5,7 +5,7 @@ package com.squareup.timessquare;
 import java.util.Date;
 
 /** Describes the state of a particular date cell in a {@link MonthView}. */
-class MonthCellDescriptor {
+public class MonthCellDescriptor {
   public enum RangeState {
     NONE, FIRST, MIDDLE, LAST
   }
