@@ -32,7 +32,7 @@ import static java.util.Calendar.YEAR;
 /**
  * Created by Blaž Šolar on 17/02/14.
  */
-public class SingleMonthCalendarView extends FrameLayout {
+public class CollapseCalendarView extends FrameLayout {
 
     final MonthView.Listener listener = new CellClickedListener();
 
@@ -57,7 +57,7 @@ public class SingleMonthCalendarView extends FrameLayout {
     private CalendarPickerView.OnDateSelectedListener dateListener;
     private CalendarPickerView.DateSelectableFilter dateConfiguredListener;
 
-    public SingleMonthCalendarView(Context context, AttributeSet attrs) {
+    public CollapseCalendarView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         locale = Locale.getDefault();
