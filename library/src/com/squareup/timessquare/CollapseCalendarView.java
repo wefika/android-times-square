@@ -3,7 +3,9 @@ package com.squareup.timessquare;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.FrameLayout;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -32,7 +34,7 @@ import static java.util.Calendar.YEAR;
 /**
  * Created by Blaž Šolar on 17/02/14.
  */
-public class CollapseCalendarView extends FrameLayout {
+public class CollapseCalendarView extends LinearLayout {
 
     final MonthView.Listener listener = new CellClickedListener();
 
@@ -60,6 +62,8 @@ public class CollapseCalendarView extends FrameLayout {
     public CollapseCalendarView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
+        setOrientation(VERTICAL);
+
         locale = Locale.getDefault();
         monthNameFormat = new SimpleDateFormat(context.getString(R.string.month_name_format), locale);
         weekdayNameFormat = new SimpleDateFormat(context.getString(R.string.day_name_format), locale);
@@ -71,6 +75,16 @@ public class CollapseCalendarView extends FrameLayout {
         mMonthView = MonthView.create(this, LayoutInflater.from(getContext()), weekdayNameFormat,
                 listener, today);
         addView(mMonthView);
+
+        Button button = new Button(getContext());
+        button.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+        addView(button);
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMonthView.setOnlyWeek(!mMonthView.getOnlyWeek());
+            }
+        });
 
         changeMonth(today);
     }

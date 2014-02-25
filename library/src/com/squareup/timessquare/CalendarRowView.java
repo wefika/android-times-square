@@ -67,6 +67,10 @@ public class CalendarRowView extends ViewGroup implements View.OnClickListener {
     Logr.d("Row.onLayout %d ms", System.currentTimeMillis() - start);
   }
 
+    public boolean isHeaderRow() {
+        return isHeaderRow;
+    }
+
   public void setIsHeaderRow(boolean isHeaderRow) {
     this.isHeaderRow = isHeaderRow;
   }

@@ -20,6 +20,8 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
   CalendarGridView grid;
   private Listener listener;
 
+    private boolean mOnlyWeek = false;
+
   public static MonthView create(ViewGroup parent, LayoutInflater inflater,
       DateFormat weekdayNameFormat, Listener listener, Calendar today) {
     final MonthView view = (MonthView) inflater.inflate(R.layout.month, parent, false);
@@ -42,7 +44,14 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
     super(context, attrs);
   }
 
-  @Override protected void onFinishInflate() {
+    public void setOnlyWeek(boolean onlyWeek) {
+        if(mOnlyWeek != onlyWeek) {
+            mOnlyWeek = onlyWeek;
+
+        }
+    }
+
+    @Override protected void onFinishInflate() {
     super.onFinishInflate();
       mPrev = (ImageButton) findViewById(R.id.prev);
       mNext = (ImageButton) findViewById(R.id.next);
@@ -59,7 +68,7 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
     long start = System.currentTimeMillis();
     title.setText(month.getLabel());
 
-    final int numRows = cells.size();
+    final int numRows = 3;
     grid.setNumRows(numRows);
     for (int i = 0; i < 6; i++) {
       CalendarRowView weekRow = (CalendarRowView) grid.getChildAt(i + 2);
@@ -102,6 +111,10 @@ public class MonthView extends LinearLayout implements View.OnClickListener {
 
             }
         }
+    }
+
+    public boolean getOnlyWeek() {
+        return mOnlyWeek;
     }
 
     public interface Listener {
